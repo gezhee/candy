@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation=" http://www.springframework.org/schema/beans
+                         http://www.springframework.org/schema/beans/spring-beans.xsd
+                         http://www.springframework.org/schema/context
+                         http://www.springframework.org/schema/context/spring-context.xsd
+                         http://www.springframework.org/schema/mvc
+                         http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    
+    <!-- 包扫描自动注入 -->
+    <context:component-scan base-package="com.utobun.candy.util" />
+    <context:component-scan base-package="com.utobun.candy.constants" />
+    <context:component-scan base-package="com.utobun.candy.controller"/>
+    <context:component-scan base-package="com.utobun.**.service.*" />
+    
+    <!-- handlerMapping -->
+    <bean id="handlerMapping" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
+    </bean>
+    
+    <!-- handlerAdapter -->
+    <bean id="handlerAdpater" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+      <property name="cacheSeconds" value="0" />
+    </bean>
+    
+    <!-- 登陆判断拦截器 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/web/b/*.do"/>
+            <mvc:exclude-mapping path="/web/b/register.do"/>
+            <mvc:exclude-mapping path="/web/b/login.do"/>
+            <mvc:exclude-mapping path="/web/b/checkUserName.do"/>
+            <mvc:exclude-mapping path="/web/b/verify.do"/>
+            <bean class="com.utobun.candy.interceptor.LoginInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
+    <!-- 视图解析 -->
+    
+    
+    <bean id="contentViewResolver" class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+      <property name="order" value="0"></property>
+      <property name="defaultContentType" value ="text/html"></property>
+      <property name="ignoreAcceptHeader" value="true"></property>
+      <property name="favorPathExtension" value="false"></property>
+      <property name="favorParameter" value="true"></property>
+      <property name="parameterName" value="content"></property>
+      <property name="mediaTypes">
+          <map>
+            <entry key="html" value="text/html"/>
+            <entry key="json" value="application/json"/>
+          </map>
+      </property>
+      <property name="viewResolvers">
+        <list>
+            <bean class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
+            <!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+                <property name="prefix" value="/"/>
+                <property name="suffix" value=".html"/>
+            </bean> -->
+            <bean id= "reviewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">  
+                <property name="cache" value="true" />  
+                <property name="prefix" value="" />  
+                <property name="suffix" value=".html" />  
+                <property name="contentType" value="text/html;charset=UTF-8"></property>  
+                <property name="requestContextAttribute" value="request" />  
+                <property name="exposeSpringMacroHelpers" value="true" />  
+                <property name="exposeRequestAttributes" value="true" />  
+                <property name="exposeSessionAttributes" value="true" />  
+            </bean>
+        </list>
+      </property>
+      
+      <property name="defaultViews">
+        <list>
+            <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+        </list>
+      </property>
+      </bean>
+      
+      <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+            <property name="templateLoaderPath" value="/"/>
+            <property name="freemarkerVariables">
+            <map>
+                <entry key="xml_escape" value-ref="fmXmlEscape"/>
+            </map>
+            </property>
+       </bean>
+
+       <bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape"/>
+      
+      
+    
+    
+    <!-- 上传 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
+        <property name="maxUploadSize" value="10485760" />  
+    </bean>
+    
+    <!-- 数据库 -->
+    <import resource="hibernate-config.xml"/>
+    
+    <!-- 发邮件 -->
+    <import resource="email-config.xml"/>
+  
+</beans>

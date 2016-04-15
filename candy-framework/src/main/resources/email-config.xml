@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+                           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+                           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
+                           http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.1.xsd"
+       default-lazy-init="true">
+     <!-- 发送邮件 -->
+    <bean id="javaMailsender" class="org.springframework.mail.javamail.JavaMailSenderImpl">      
+        <property name="host" value="${email_host}"/>      
+        <property name="username" value="${email_username}"/>      
+        <property name="password" value="${email_password}"/>      
+        <property name="javaMailProperties">        
+            <props>        
+                <prop key="mail.smtp.auth">${email_mail.smtp.auth}</prop>
+                <prop key="mail.smtp.timeout">${email_mail.smtp.timeout}</prop>
+            </props>
+        </property>
+    </bean>
+    
+</beans>

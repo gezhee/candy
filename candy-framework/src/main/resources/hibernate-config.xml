@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+                           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+                           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
+                           http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.1.xsd"
+       default-lazy-init="true">
+    
+    
+    <context:component-scan base-package="com.utobun.candy.domain" />
+    <context:component-scan base-package="com.utobun.candy.dao.impl" />
+    <context:component-scan base-package="com.utobun.candy.dao.base" />
+    
+    
+    <!-- 数据源 -->
+    <context:property-placeholder location="classpath*:config/*.properties"/>
+    
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="${database_url}" />
+        <property name="username" value="${database_username}" />
+        <property name="password" value="${database_password}" />
+        <property name="defaultAutoCommit" value="true" />
+        <property name="initialSize" value="10" />
+        <property name="maxTotal" value="100" />
+        <property name="maxIdle" value="50" />
+        <property name="minIdle" value="10" />
+        <property name="maxWaitMillis" value="60000" />
+    </bean>
+    
+    <!-- hibernate-->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="packagesToScan" value="com.utobun.candy.domain"/>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+                <prop key="hibernate.hbm2ddl.auto">none</prop>
+                <prop key="hibernate.show_sql">false</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.cache.use_second_level_cache">false</prop>
+                <prop key="hibernate.cache.use_query_cache">false</prop>
+                <prop key="hibernate.connection.release_mode">auto</prop>
+            </props>
+        </property>
+    </bean>
+    
+    <!-- 统一使用spring事务 -->
+    <bean id="transactionManager"   
+            class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />  
+    </bean>
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+    
+    
+    
+</beans>

@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Loading Bootstrap -->
+    <link href="../dist/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Loading Flat UI -->
+    <link href="../dist/css/flat-ui.min.css" rel="stylesheet">
+    <link href="../css/index.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="img/favicon.ico">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="js/vendor/html5shiv.js"></script>
+      <script src="js/vendor/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <p class="text-right reg-login">已经注册过了<a href="">登录</a></p>
+    <div class="container reg-layout">
+      <p class="text-center" style="font-size: 200%">欢迎注册:</p>
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4 reg">
+            <div class="reg-row">
+              <span>用户名</span>
+              <input type="text" class="form-control" id="name" placeholder="请输入用户名"/>
+              <span class="fui-eye reg-tips" style="display:none">用户名被被人注册啦</span>
+            </div>
+            <div class="reg-row">
+              <span>密码</span>
+              <input type="text" class="form-control" id="password" placeholder="请输入密码"/>
+              <span class="fui-eye reg-tips" style="display:none">密码包含特殊字符</span>
+            </div>
+            <div class="reg-row">
+              <span>确认密码</span>
+              <input type="text" class="form-control" id="re_password" placeholder="请输入密码"/>
+              <span class="fui-eye reg-tips" style="display:none">两次输入的密码不一致</span>
+            </div>
+            <div class="reg-row">
+              <span>邮箱</span>
+              <input type="text" class="form-control" id="email" placeholder="请输入邮箱"/>
+              <span class="fui-eye reg-tips" style="display:none">邮箱格式有误</span>
+            </div>
+            <div class="row reg-row">
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <input type="text" class="form-control" id="verify_code"></input>
+              </div>
+              <div class="col-md-4 col-sm-4 col-xs-4">
+                <img src="#" class="verify-code-img" id="verify_code_pic">
+              </div>
+              <div class="col-md-2 col-sm-2 col-xs-2">
+                <a href="#"><span class="glyphicon glyphicon-repeat login-refresh" id="login_refresh"></span></a>
+              </div>
+            </div>
+            <div class="reg-row">
+              <a class="btn btn-primary btn-lg btn-block" href="#" id="submit_register">注册</a>
+            </div>
+            
+        </div>
+      </div>
+    </div>
+</body>
+<script src="../dist/js/vendor/jquery.min.js"></script>
+<script src="../dist/js/flat-ui.min.js"></script>
+<script src="../js/comm/admin.js"></script>
+<script src="../js/comm/api.js"></script>
+<script src="../js/user/register.js"></script>
+</html>

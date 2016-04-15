@@ -1,0 +1,21 @@
+
+.index-panel .title {font-size: 24px;}
+.index-panel p {font-size: 17px;margin-top: 10px;}
+.index-panel-note  span {font-size: 18px;margin-left: 10px;}
+.index-tag .btn {margin-bottom: 10px;}
+.verify-code-input {margin-bottom: 10px;width: 150px}
+.verify-code-img {width:100px;}
+
+
+.login-layout {margin-top: 25px;}
+.login-user-img {width: 140px;height: 140px;margin-bottom: 35px;}
+.login-tips {font-size: 13px;color: red}
+.login-p {font-size:15px;}
+.login-refresh {margin-top: 13px;}
+.login-reg {margin-right: 30px;font-size: 15px;margin-top: 5px;}
+
+.reg-layout {margin-top: 20px;}
+.reg-row {margin-bottom:15px;}
+.reg-tips {font-size: 13px;color: red}
+
+.reg-login {margin-right: 50px;margin-top:10px;font-size: 15px;}
