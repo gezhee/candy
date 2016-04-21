@@ -209,18 +209,16 @@
         <version>2.3.23</version>
     </dependency>
     
-    <!-- 验证码 -->
-    <dependency>
-        <groupId>com.utobun.patchca</groupId>
-        <artifactId>patchca</artifactId>
-        <version>0.5.0</version>
-    </dependency>
+    
+    <!-- 七牛 -->
+   <dependency>
+        <groupId>com.qiniu</groupId>
+        <artifactId>qiniu-java-sdk</artifactId>
+        <version>[7.0.0, 7.0.99]</version>
+   </dependency>
     
   </dependencies>
     
-   
-   
-   
    
   <dependencyManagement>
   <dependencies>
