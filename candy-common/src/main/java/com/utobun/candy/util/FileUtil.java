@@ -51,7 +51,7 @@ public class FileUtil {
      *  
      * @param strFilePath 文件夹路径 
      */  
-    public boolean mkdirFolder(String strFilePath) {
+    public static boolean mkdirFolder(String strFilePath) {
         boolean bFlag = false;
         try {
             File file = new File(strFilePath.toString());
@@ -71,7 +71,7 @@ public class FileUtil {
      * @param strFileContent
      * @return
      */
-    public boolean createFile(String strFilePath, String strFileContent) {  
+    public static boolean createFile(String strFilePath, String strFileContent) {  
         boolean bFlag = false;  
         try {  
             File file = new File(strFilePath.toString());  

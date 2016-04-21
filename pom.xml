@@ -211,15 +211,21 @@
     
     <!-- 验证码 -->
     <dependency>
-        <groupId>com.utobun.patchca</groupId>
-        <artifactId>patchca</artifactId>
-        <version>0.5.0</version>
+       <groupId>com.utobun.patchca</groupId>
+       <artifactId>patchca</artifactId>
+       <version>0.5.0</version>
     </dependency>
     <!-- 七牛 -->
     <dependency>
-    	<groupId>com.qiniu</groupId>
-    	<artifactId>qiniu-java-sdk</artifactId>
-    	<version>[7.0.0, 7.0.99]</version>
+      <groupId>com.qiniu</groupId>
+      <artifactId>qiniu-java-sdk</artifactId>
+      <version>[7.0.0, 7.0.99]</version>
+    </dependency>
+    <!-- 二维码生成工具 -->
+    <dependency>
+      <groupId>com.google.zxing</groupId>
+      <artifactId>core</artifactId>
+      <version>3.2.1</version>
     </dependency>
   </dependencies>
     

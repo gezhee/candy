@@ -17,7 +17,7 @@ import com.utobun.candy.param.SessionClass;
 import com.utobun.candy.service.VerifyService;
 import com.utobun.candy.service.base.BaseServiceAbstract;
 import com.utobun.candy.util.ReturnUtil;
-import com.utobun.candy.util.VerifyCodeUtil;
+import com.utobun.candy.util.image.VerifyCodeUtil;
 
 /** 
  * ClassName: IdentifyServiceImpl <br/> 
