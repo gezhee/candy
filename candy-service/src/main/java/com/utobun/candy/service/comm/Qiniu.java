@@ -1,8 +1,7 @@
 package com.utobun.candy.service.comm;
 
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.qiniu.common.QiniuException;
 import com.qiniu.http.Response;
@@ -12,7 +11,7 @@ import com.utobun.candy.comm.CandyConf;
 
 public class Qiniu {
     
-    protected static Logger log = LogManager.getLogger(Qiniu.class.getName());
+    protected static Logger log = LoggerFactory.getLogger(Qiniu.class.getName());
     private String ACCESS_KEY = CandyConf.getValue("qiniu_ak");
     private String SECRET_KEY = CandyConf.getValue("qiniu_sk");
     private String bucketname = CandyConf.getValue("qiniu_candy");

@@ -9,13 +9,13 @@ import java.io.PrintWriter;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 public class FileUtil {
     
-    protected static Logger log = LogManager.getLogger(FileUtil.class.getName());
+    protected static Logger log = LoggerFactory.getLogger(FileUtil.class.getName());
     
     public static Set<String> sets = new HashSet<String>();
   

@@ -6,9 +6,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.hibernate.CacheMode;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -16,6 +13,8 @@ import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Criterion;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.utobun.candy.contants.Contants;
@@ -23,7 +22,7 @@ import com.utobun.candy.contants.Contants;
 @Repository
 public abstract class BaseDaoAbstract<T> implements BaseDao<T>{
     
-    protected static Logger log = LogManager.getLogger(BaseDaoAbstract.class.getName());
+    protected static Logger log = LoggerFactory.getLogger(BaseDaoAbstract.class.getName());
     /**
      * sessionFactory实例
      */

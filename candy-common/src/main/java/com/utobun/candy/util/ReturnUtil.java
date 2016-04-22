@@ -3,8 +3,8 @@ package com.utobun.candy.util;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 
@@ -19,7 +19,7 @@ import com.utobun.candy.contants.ReturnData;
 */
 public class ReturnUtil
 {
-    protected static Logger log = LogManager.getLogger(ReturnUtil.class.getName());
+    protected static Logger log = LoggerFactory.getLogger(ReturnUtil.class.getName());
     
     public static ReturnData fail(BindingResult br) 
     {
@@ -41,12 +41,12 @@ public class ReturnUtil
     public static ReturnData fail(ReturnCode rc) 
     {
         Map<String, Object> data = new HashMap<String, Object>();
-        log.info(rc);
+        log.info(rc.toString());
         return new ReturnData(rc, data);
     }
     public static ReturnData fail(ReturnCode rc, Map<String, Object> data) 
     {
-        log.info(rc);
+        log.info(rc.toString());
         return new ReturnData(rc, data);
     }
     public static ReturnData success() 

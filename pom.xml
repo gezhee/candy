@@ -34,9 +34,6 @@
     <mysql-connector-java.version>5.1.31</mysql-connector-java.version>
     <c3p0.version>0.9.5-pre8</c3p0.version>
 
-    <!-- log -->
-    <log4j2.version>2.0.2</log4j2.version>
-
     <!-- json -->
     <jackson-databind.version>2.4.1.2</jackson-databind.version>
     <json.version>20141113</json.version>
@@ -101,17 +98,6 @@
         <groupId>org.springframework</groupId>
         <artifactId>spring-test</artifactId>
         <version>4.1.6.RELEASE</version>
-    </dependency>
-    <!-- log -->
-    <dependency>
-        <groupId>org.apache.logging.log4j</groupId>
-        <artifactId>log4j-api</artifactId>
-        <version>${log4j2.version}</version>
-    </dependency>
-    <dependency>
-        <groupId>org.apache.logging.log4j</groupId>
-        <artifactId>log4j-core</artifactId>
-        <version>${log4j2.version}</version>
     </dependency>
 
     <!-- commons -->
@@ -221,6 +207,40 @@
       <artifactId>core</artifactId>
       <version>3.2.1</version>
     </dependency>
+    
+    <!-- redis -->
+    <dependency>
+      <groupId>redis.clients</groupId>
+      <artifactId>jedis</artifactId>
+      <version>2.8.0</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-redis</artifactId>
+      <version>1.6.4.RELEASE</version>
+    </dependency>
+    
+    <!-- 日志 -->
+    
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>1.1.6</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.logback-extensions</groupId>
+      <artifactId>logback-ext-spring</artifactId>
+      <version>0.1.4</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>jcl-over-slf4j</artifactId>
+      <version>1.7.20</version>
+    </dependency>
+    
   </dependencies>
     
     

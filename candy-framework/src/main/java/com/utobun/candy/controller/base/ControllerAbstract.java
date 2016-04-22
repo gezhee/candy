@@ -1,10 +1,11 @@
 package com.utobun.candy.controller.base;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.utobun.candy.service.base.BaseServiceAbstract;
 
 public class ControllerAbstract {
-    protected static Logger log = LogManager.getLogger(BaseServiceAbstract.class.getName());
+    protected static Logger log = LoggerFactory.getLogger(BaseServiceAbstract.class.getName());
 }

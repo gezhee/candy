@@ -18,15 +18,13 @@
     <context:component-scan base-package="com.utobun.candy.dao.impl" />
     <context:component-scan base-package="com.utobun.candy.dao.base" />
     
-    
-    <!-- 数据源 -->
     <context:property-placeholder location="classpath*:config/*.properties"/>
-    
+    <!-- 数据源 -->
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="${database_url}" />
-        <property name="username" value="${database_username}" />
-        <property name="password" value="${database_password}" />
+        <property name="url" value="${mysql_url}" />
+        <property name="username" value="${mysql_username}" />
+        <property name="password" value="${mysql_password}" />
         <property name="defaultAutoCommit" value="true" />
         <property name="initialSize" value="10" />
         <property name="maxTotal" value="100" />
@@ -53,12 +51,34 @@
     </bean>
     
     <!-- 统一使用spring事务 -->
-    <bean id="transactionManager"   
+    <bean id="transactionManager"
             class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory" />  
     </bean>
     <tx:annotation-driven transaction-manager="transactionManager"/>
     
+    <!-- redis -->
+    <bean id="jedisConnectionFactory" 
+          class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" 
+          p:host-name="${redis_hostname}" 
+          p:port="${redis_port}"/>
+          
+    <!-- redis template definition -->
+    <bean id="redisTemplate" 
+          class="org.springframework.data.redis.core.RedisTemplate" 
+          p:connection-factory-ref="jedisConnectionFactory"/>
     
+    <!-- 发送邮件 -->
+    <bean id="javaMailsender" class="org.springframework.mail.javamail.JavaMailSenderImpl">      
+        <property name="host" value="${email_host}"/>      
+        <property name="username" value="${email_username}"/>      
+        <property name="password" value="${email_password}"/>      
+        <property name="javaMailProperties">        
+            <props>        
+                <prop key="mail.smtp.auth">${email_mail.smtp.auth}</prop>
+                <prop key="mail.smtp.timeout">${email_mail.smtp.timeout}</prop>
+            </props>
+        </property>
+    </bean>
     
 </beans>
